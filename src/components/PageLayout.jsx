@@ -25,7 +25,6 @@ export const PageLayout = (props) => {
     //The eslint thing is here since we don't need instance and I don't want the whole warning thing
     //eslint-disable-next-line
     const { instance, accounts } = useMsal();
-    console.log(accounts)
     
     useEffect(() => {
         //This useEffect's purpose is to determine if the user with the username of the person signing in is valid
