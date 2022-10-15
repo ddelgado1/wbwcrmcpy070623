@@ -1,0 +1,38 @@
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.app_header {
+  position: relative;
+  min-height: 50px;
+  margin-left: 0%;
+  margin-top: 1%;
+}
+
+.app_header > h3{
+  display: inline-block;
+  margin-left: 40px;
+}
+
+a {
+  text-decoration: none !important;
+  color: blanchedalmond;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

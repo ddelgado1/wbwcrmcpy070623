@@ -1,0 +1,168 @@
+/* customer_index.js and customer_index_table.js */
+
+/* ------------------------------------------------------------------------- */
+.index {
+  /* The main div for the customer_index component */
+  margin-top: 2%;
+ 
+}
+
+table {
+  /* The table being rendered itself */
+  width: 50%;
+  max-height: 200px;
+  border-spacing: 0;
+  border: 1px solid black;
+
+  tr {
+    :last-child {
+      td {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  th,
+  td {
+    margin: 0;
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    text-align: center;
+  }
+}
+
+#tableDiv{
+  /* This is the main div for the table itself */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pagination{
+  padding: 10px;
+}
+
+
+
+/* ------------------------------------------------------------------------- */
+
+/* new.js for workers and customers */
+
+/* ------------------------------------------------------------------------- */
+
+label, input {
+  /* We use labels and inputs in the new page so we do stuff to it here */
+  display: block;
+}
+
+label {
+  /* We use labels in the new page so we do stuff to it here */
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+.submit_new_button{
+  /* The submit button for the new customer */
+  margin-left: 1em;
+}
+
+#multi_select{
+  /* The multi select element from the new page */
+  max-width: 10em;
+}
+
+#admin{
+  display: inline;
+  width: 100px;
+  margin-left: -40px;
+}
+
+
+
+.new_messages{
+  /* The errors that occur on the new page */
+  margin-left: 10px;
+}
+
+
+/* ------------------------------------------------------------------------- */
+
+
+/* show.js */
+
+/* ------------------------------------------------------------------------- */
+
+.show_h2_div{
+  /* The individual divs from the show page */
+  margin-left: 100px;
+}
+
+#deletion_button{
+  /* The deletion button itself */
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, 0%);
+  transform: translate(-50%,0%);
+
+}
+
+#customer_chosen_notes{
+  /* The notes of the chosen customer */
+  white-space: pre-line;
+  line-height: 30px;
+}
+
+.inaccessible{
+  /* If the main section of the show page is inaccessible, we do this to it */
+  pointer-events: none;
+  opacity: 20%;
+}
+
+.confirm_invisible{
+  /* If the confirm box of the show page is invisible, we do this to it */
+  pointer-events: none;
+  opacity: 0%;
+}
+
+#confirm_box{
+  /* The confirm box itself */
+  width: 30%;
+  height: 100px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: tan;
+}
+
+.confirm_box_button{
+  /* The class for the buttons in the confirm box */
+  margin: 10px;
+  width: 100px;
+}
+
+#confirm_message{
+  /* The actual confirm message text */
+  color: black;
+}
+
+#select_search{
+  width: 300px;
+}
+
+
+/* ------------------------------------------------------------------------- */
+
+/* forbidden.js */
+
+/* ------------------------------------------------------------------------- */
+
+#Forbidden{
+  text-align: center;
+}
+
+/* home.js */
+
+#center{
+  text-align: center;
+}
