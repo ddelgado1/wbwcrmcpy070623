@@ -2,14 +2,14 @@ import axios from 'axios';
 
 export const getCustomers = () => dispatch => {
   //Does exactly what it says it does
-  axios.get("http://localhost:3001/customers")
+  axios.get("https://enigmatic-reaches-71021.herokuapp.com/customers")
   .then(response => dispatch({ type: 'GET_ALL_CUSTOMERS', payload: response.data}))
   .catch(err => dispatch({type: 'ERROR_CAUGHT', payload: {err_message: err.response.data.message, err_code: err.response.request.status, err_value: err.response.request.statusText}}))
 } 
 
 export const createCustomer = (customer_information, selected_workers) => dispatch => {
   //Does exactly what it says it does
-  axios.post("http://localhost:3001/customers", {customer: customer_information, workers: selected_workers})
+  axios.post("https://enigmatic-reaches-71021.herokuapp.com/customers", {customer: customer_information, workers: selected_workers})
   .then(response => {
     dispatch({ type: 'CREATE_NEW_CUSTOMER', payload: {customer: response.data.customer[0], workers: selected_workers}}) 
     dispatch({ type: 'CREATE_NEW_WORKER_CUSTOMERS', payload: response.data.new_worker_customers })
@@ -27,13 +27,13 @@ export const lookAtSpecificCustomer = (customer_information, workers) => dispatc
 export const updateNotes = (note_data) => dispatch => {
   //Since we will be defaulting with the notes already blank, we only need patch This both sends the data to the back end as well as updates the current notes on the front end
   dispatch({type: 'NOTE_UPDATED', payload: note_data})
-  axios.post(`http://localhost:3001/customers/update`, {value: note_data.value, id: note_data.id})
+  axios.post(`https://enigmatic-reaches-71021.herokuapp.com/customers/update`, {value: note_data.value, id: note_data.id})
 }
 
 export const destroyCustomer = (customer_id) => dispatch => {
   //This deletes the customer as well as the worker_customers associated with it
   
-  axios.post(`http://localhost:3001/customers/destroy`, {id: customer_id})
+  axios.post(`https://enigmatic-reaches-71021.herokuapp.com/customers/destroy`, {id: customer_id})
   .then(() => {
     dispatch({type: 'CUSTOMER_DESTROYED', payload: customer_id});
     dispatch({type: 'WORKER_CUSTOMER_ROWS_DESTROYED', payload: customer_id});  
