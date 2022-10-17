@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { PageLayout } from "./components/PageLayout";
 import {lazy, Suspense} from 'react';
 import './App.css';  
+import { useIsAuthenticated } from "@azure/msal-react";
+
 
 const Index = lazy(() => import('./components/customer/customer_index.js'));
 const NewCustomer = lazy(() => import('./components/customer/new.js'));
@@ -20,6 +22,7 @@ const Home = lazy(() => import('./components/home.js'));
 const App = () => {
     
     const dispatch = useDispatch();
+    const isAuthenticated = useIsAuthenticated();
 
       useEffect(() => {
         dispatch(getCustomers());
@@ -31,7 +34,7 @@ const App = () => {
       <div>
         <PageLayout /> 
         <Suspense fallback={<h1>Loading...</h1>}>
-          <Routes>
+          {isAuthenticated ? <Routes>
             <Route path="/" element={<Home />} />
             <Route path="customers" element={<Index />} />
             <Route path="new_customer" element={<NewCustomer />} />
@@ -41,6 +44,8 @@ const App = () => {
             <Route path="calendar" element={<OutlookCalendarDisplay />} />
             <Route path="event_create" element={<OutlookCalendarEventCreate />} />
           </Routes>
+          :
+          null}
         </Suspense>
       </div>
       
