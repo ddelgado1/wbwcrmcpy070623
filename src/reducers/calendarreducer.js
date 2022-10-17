@@ -1,6 +1,7 @@
 const initialState = {
     calendar_info: [],
-    connected_people: []
+    connected_people: [],
+    info_success: false
 }
 
 export default function calendarReducer(state = initialState, action){
@@ -11,7 +12,8 @@ export default function calendarReducer(state = initialState, action){
                 calendar_info: action.payload.map(element => {
                     return {title: element.subject, attendees: element.attendees, start: element.start.dateTime, end: element.end.dateTime, isAllDay: element.isAllDay, categories: element.categories, location: element.location, 
                         recurrence: element.recurrence, id: element.id
-                }})
+                }}),
+                info_success: true
             }
         case 'USER_PEOPLE_CONNECTIONS':
             return{

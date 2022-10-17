@@ -20,6 +20,7 @@ const OutlookCalendar = (props) => {
   const dispatch = useDispatch();
   // const navigate = useNavigate();
   const calendar_info = useSelector((state) => state.calendar.calendar_info) // Here are all of the calendar events
+  const calendar_info_success = useSelector((state) => state.calendar.info_success)// What determines if we render page or not
   const [calendarClassName, setCalendarClassName] = useState("normal");
   const [eventChosenDiv, setEventChosenDiv] = useState(null);
 
@@ -102,7 +103,7 @@ const OutlookCalendar = (props) => {
   }
 
   return(
-    calendar_info.length !== 0 ? 
+    calendar_info_success === true ? 
     <div>
       {eventChosenDiv}
       <div id="calendar_component" className={calendarClassName}>
