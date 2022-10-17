@@ -67,7 +67,7 @@ export const PageLayout = (props) => {
                 <Navbar bg="primary" variant="dark">
                     <div className="app_header">
                         <h3><Link to="customers">View All Customers</Link></h3>
-                        <h3><Link to="calendar">View Calendar</Link></h3>
+                        {/* <h3><Link to="calendar">View Calendar</Link></h3> */}
                         {workers.current_worker.admin === 1 && <h3><Link to="new_customer">Create a New Customer</Link></h3>}
                         <h3><Link to="search">Search Customers</Link></h3>
                         {workers.current_worker.admin === 1 && <h3><Link to="new_worker">Add a New Worker</Link></h3>}
