@@ -78,7 +78,7 @@ const New = () => {
         if (selectedWorker.admin === 1){
             return(
                 <>
-                    <h1>Create a new Customer</h1>
+                    <h1>Create a new Contact</h1>
                     <form id="customer_form" onSubmit={handleSubmit}>
                         <label>
                             Company: 

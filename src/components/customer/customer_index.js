@@ -20,14 +20,14 @@ const Index = () => {
     const columns = useMemo( //These are the columns for the table we're using
         () => [
           {
-            Header: 'Customers',
+            Header: 'Contacts',
             columns: [
               {
                 Header: 'Company Name',
                 accessor: 'company',
               },
               {
-                Header: 'Customer Name',
+                Header: 'Contact Name',
                 accessor: 'customer_name',
               },
               {
@@ -39,7 +39,7 @@ const Index = () => {
                 accessor: 'workers',
               },
               {
-                Header: "See Customer",
+                Header: "See Contact",
                 accessor: "customer_button"
               }
             ],

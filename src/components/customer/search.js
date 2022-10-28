@@ -62,7 +62,7 @@ const Search = () => {
                     <input type="text" defaultValue={customer.company} id="company" onChange={e => handleChange(e)}></input>
                 </label>
                 <label>
-                    Customer: 
+                    Contact: 
                     <input type="text" defaultValue={customer.customer_name} id="customer_name" onChange={e => handleChange(e)}></input>
                 </label>
                 <label>
