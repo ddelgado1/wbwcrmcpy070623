@@ -36,9 +36,9 @@ const App = () => {
         <Suspense fallback={<h1>Loading...</h1>}>
           {isAuthenticated ? <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="customers" element={<Index />} />
-            <Route path="new_customer" element={<NewCustomer />} />
-            <Route path="customer" element={<Show />} />
+            <Route path="contacts" element={<Index />} />
+            <Route path="new_contact" element={<NewCustomer />} />
+            <Route path="contact" element={<Show />} />
             <Route path="search" element={<Search />} />
             <Route path="new_worker" element={<NewWorker />} />
             {/* <Route path="calendar" element={<OutlookCalendarDisplay />} /> */}
