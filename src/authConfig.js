@@ -1,7 +1,7 @@
 export const msalConfig = {
     auth: {
-      clientId: "f22b238d-fdfd-471f-8eb2-9df6c9e2fbf1",
-      authority: "https://login.microsoftonline.com/common", // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
+      clientId: "7ed9d5a4-bc2e-4079-9e3d-78dd1b3b828d",
+      authority: "https://login.microsoftonline.com/b511dfbf-cb79-4dcf-b4a5-f88702c4a412", // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
       redirectUri: "https://aquamarine-dasik-f163ae.netlify.app/",
     },
     cache: {
