@@ -18,7 +18,7 @@ export default function workerReducer(state = initialState, action){
             return{
                 ...state,
                 workers: [...state.workers, action.payload[0]],
-                select_tag_worker_list: [...state.workers, {label: action.payload[0].name, value: action.payload[0].id}] 
+                select_tag_worker_list: [...state.select_tag_worker_list, {label: action.payload[0].name, value: action.payload[0].id}] 
             }
         case 'SET_CURRENT_WORKER':
             return{
