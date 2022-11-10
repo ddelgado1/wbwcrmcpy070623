@@ -111,9 +111,6 @@ const Show = () => {
                 <button className="confirm_box_button" onClick={e => handleDeletion(e)}>Delete</button>
             </div>
 
-            <div>
-                <h1>{errors[0]}</h1>
-            </div>
             <div id="rest_of_show" className={mainDivAccessible}>
                 <div>{renderMaker().map(element => element)}</div>
                 <div key={`notes_${customerChosen.id}`} className='show_h2_div'>
