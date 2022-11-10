@@ -61,6 +61,7 @@ export default function customerReducer(state = initialState, action){
             if (action.payload.worker_id){//We don't include an else because we already have what would happen saved to filteredOutCustomers if an else clause was used
                 filteredOutCustomers = filteredOutCustomers.filter(individualCustomer => action.payload.all_joins[individualCustomer.id].includes(action.payload.worker_id)) //Here we do the final step where we filter it even further so that it only has the ones where the workers are in it
             }
+            debugger;
             filteredOutCustomers.sort((a,b) => {//This makes it so that we have them sorted by how many workers are on that customer
                 return action.payload.all_joins[a.id].length - action.payload.all_joins[b.id].length; 
             })
