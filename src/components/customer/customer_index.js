@@ -90,7 +90,7 @@ const Index = () => {
     const handleClick = (e, chosen_customer) => {
         //This should mean they clicked on a choice and now they're supposed to be routed to the show page of that specific customer
         dispatch(lookAtSpecificCustomer(chosen_customer, workerListMaker(chosen_customer.id)))
-        navigate('/customer')
+        navigate('/contact')
         /* Route to page once redux saves the information */
     }
 
