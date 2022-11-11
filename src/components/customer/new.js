@@ -81,7 +81,7 @@ const New = () => {
                     <h1>Create a new Contact</h1>
                     <form id="customer_form" onSubmit={handleSubmit}>
                         <label>
-                            Company: 
+                            Company: <span className='red_asterisk'>*</span>
                             <input type="text" defaultValue={customer.company} id="company" onChange={e => handleChange(e)}></input>
                         </label>
                         <label>

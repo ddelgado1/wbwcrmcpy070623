@@ -28,7 +28,7 @@ const Search = () => {
     useEffect(() => {
         //Navigates to the index page on the change of searched_customers
         if (hasRenderedRef.current === true && customers.search_message === null && customers.searched === true){
-            navigate("/customers");
+            navigate("/contacts");
         };
         
     }, [customers, navigate, dispatch]);
