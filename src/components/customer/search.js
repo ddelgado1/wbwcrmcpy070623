@@ -38,7 +38,7 @@ const Search = () => {
         e.preventDefault();
         dispatch(revertSearchedCustomers());
         hasRenderedRef.current = true;
-        dispatch(searchCustomers(customer, selected, workerCustomers.worker_customers_ordered_by_customer))
+        dispatch(searchCustomers(customer, selected, workerCustomers.worker_customers))
         
     }
 
@@ -77,7 +77,7 @@ const Search = () => {
                     </select>
                 </label>
                 <label>
-                    Workers: 
+                    WB Wood Owners: 
                     <div id="select_search">
                         <Select options={search_select_workers} onChange={e => handleSelect(e)} />
                     </div>

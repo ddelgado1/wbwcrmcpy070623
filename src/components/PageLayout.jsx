@@ -5,6 +5,7 @@ import { SignInButton } from "./SignInButton";
 import { SignOutButton } from "./SignOutButton";
 import { Link, Outlet } from 'react-router-dom';
 import { setCurrentWorker } from '../actions/worker';
+import { revertSearchedCustomers } from '../actions/customer.js';
 import { deleteErrors } from "../actions/error";
 import { useDispatch, useSelector } from 'react-redux';
 import { useMsal } from "@azure/msal-react";
@@ -58,6 +59,9 @@ export const PageLayout = (props) => {
         }
     }, [error, dispatch])
 
+    const resetSearch = (e) => {
+        dispatch(revertSearchedCustomers());
+    }
 
     if (Object.keys(error).length === 0 || error.err_code === 406){
         return (
@@ -66,11 +70,11 @@ export const PageLayout = (props) => {
             <div>
                 <Navbar bg="primary" variant="dark">
                     <div className="app_header">
-                        <h3><Link to="contacts">View All Contacts</Link></h3>
+                        <h3 onClick={e => resetSearch(e)}><Link to="contacts">View All Contacts</Link></h3>
                         {/* <h3><Link to="calendar">View Calendar</Link></h3> */}
-                        {workers.current_worker.admin === 1 && <h3><Link to="new_contact">Create a New Contact</Link></h3>}
-                        <h3><Link to="search">Search Contacts</Link></h3>
-                        {workers.current_worker.admin === 1 && <h3><Link to="new_worker">Add a New Worker</Link></h3>}
+                        {workers.current_worker.admin === 1 && <h3 onClick={e => resetSearch(e)}><Link to="new_contact">Create a New Contact</Link></h3>}
+                        <h3 onClick={e => resetSearch(e)}><Link to="search">Search Contacts</Link></h3>
+                        {workers.current_worker.admin === 1 && <h3 onClick={e => resetSearch(e)}><Link to="new_worker">Add a New Worker</Link></h3>}
                         <h3 id="sign_out_button"><SignOutButton /></h3>
                     </div>
                 </Navbar>

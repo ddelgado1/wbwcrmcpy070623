@@ -154,6 +154,24 @@ label {
   width: 300px;
 }
 
+/* search.js */
+
+/* ------------------------------------------------------------------------- */
+
+#comboboxStyles{
+  display: 'inline-block';
+  margin-left: '5px';
+}
+
+#menuStyles {
+  max-height: 150;
+  max-width: 300;
+  overflow-y: 'scroll';
+  background-color: '#eee';
+  padding: 0;
+  list-style: 'none';
+  position: 'relative';
+}
 
 /* ------------------------------------------------------------------------- */
 

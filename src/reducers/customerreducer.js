@@ -49,7 +49,7 @@ export default function customerReducer(state = initialState, action){
                 selected_customer_workers: action.payload.workers
             }
         case 'SEARCH_FOR_CUSTOMERS':
-            //Here, our action.payload looks like this: {search_qualities: {company: "...", customer_name: "...", category: "..."}, worker_id: <id of worker selected>, all_joins: <every join table categorized by worker>}}
+            //Here, our action.payload looks like this: {search_qualities: {company: "...", customer_name: "...", category: "..."}, worker_id: <id of worker selected>, all_worker_customers: <every join table categorized by worker>}}
             let filteredOutCustomers = [...state.customers];
             for (const key of Object.keys(action.payload.search_qualities)){
                 //The purpose of this for loop is to filter out only the ones that match the qualities. The reason we use let is we want it to be somthing that keeps filtering so that it meets all of the qualities
@@ -59,10 +59,14 @@ export default function customerReducer(state = initialState, action){
                 }
             }
             if (action.payload.worker_id){//We don't include an else because we already have what would happen saved to filteredOutCustomers if an else clause was used
-                filteredOutCustomers = filteredOutCustomers.filter(individualCustomer => action.payload.all_joins[individualCustomer.id].includes(action.payload.worker_id)) //Here we do the final step where we filter it even further so that it only has the ones where the workers are in it
+                filteredOutCustomers = filteredOutCustomers.filter(individualCustomer => {
+                    const worker_customers_with_customer = action.payload.all_worker_customers.filter(workerCustomerElement => workerCustomerElement.customer_id === individualCustomer.id && workerCustomerElement.worker_id === action.payload.worker_id);
+                    return worker_customers_with_customer.length !== 0;//Here we do the final step where we filter it even further so that it only has the ones where the workers are in it
+                });
             }
+
             filteredOutCustomers.sort((a,b) => {//This makes it so that we have them sorted by how many workers are on that customer
-                return action.payload.all_joins[a.id].length - action.payload.all_joins[b.id].length; 
+                return action.payload.all_worker_customers.filter(workerCustomerElement => workerCustomerElement.customer_id === a.id).length - action.payload.all_worker_customers.filter(workerCustomerElement => workerCustomerElement.customer_id === b.id).length
             })
             if (filteredOutCustomers.length === 0){
                 return{

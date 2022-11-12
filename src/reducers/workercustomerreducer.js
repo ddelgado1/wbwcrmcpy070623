@@ -1,7 +1,6 @@
 const initialState = {
     worker_customers: [],
-    worker_customers_succeeded: false, //The purpose of this is that when we start the webpage, if we have no worker_customers at all, we run the risk of having it load forever. Instead, we'll change this and load based on if this is true or not instead of if there are worker_customers or not
-    searched_rows: []
+    worker_customers_succeeded: false //The purpose of this is that when we start the webpage, if we have no worker_customers at all, we run the risk of having it load forever. Instead, we'll change this and load based on if this is true or not instead of if there are worker_customers or not
 }
 
 export default function workerCustomerReducer(state = initialState, action){
@@ -16,6 +15,11 @@ export default function workerCustomerReducer(state = initialState, action){
             return{
                 ...state,
                 worker_customers: state.worker_customers.concat(action.payload)
+            }
+        case 'ADDED_WORKERS':
+            return{
+                ...state,
+                worker_customers: state.worker_customers
             }
         default:
             return{

@@ -26,7 +26,7 @@ const Show = () => {
         //When the customer gets deleted (if there are no errors) or we reload the page, we navigate to the main page
         if (Object.keys(customerChosen).length === 0){
             if (Object.keys(errors).length === 0){
-                navigate("/customers");
+                navigate("/contacts");
             }
         }
     }, [customerChosen, errors, navigate])
@@ -46,7 +46,7 @@ const Show = () => {
             if (key === "contact_title"){
                 divs.push(
                 <div key="workers" className='show_h2_div'>
-                    <h2>Workers</h2>
+                    <h2>WB Wood Owners</h2>
                     {selectedWorkers.map((worker, index) =>{
                         return(<h3 key={worker.value + `${index}`}>{worker.label}</h3>)
                     })}
@@ -97,6 +97,11 @@ const Show = () => {
         
     }
 
+    // const handleAddWorkerButtonClicked = (event) => {
+    //     //Sends to a page where they can add a worker to the current customer
+    //     navigate("/add_worker");
+    // }
+
     const checkIfHasAccess = () => {
         //This function will determine if the user has access to add notes
         const filterWorkerCustomersBasedOnCustomerIDAndWorkerID = workerCustomers.filter(workerCustomer => workerCustomer.customer_id === customerChosen.id && workerCustomer.worker_id === currentWorker.id)
@@ -120,7 +125,10 @@ const Show = () => {
                     <br/>
                     {checkIfHasAccess() && <button onClick={e => handleSubmission(e)}>Submit Notes</button>}
                 </div>
-                {currentWorker.admin === 1 && <button id="deletion_button" onClick={e => handleDeleteButtonClicked(e)}>Delete this Customer</button>}
+                <div id="buttons_div">
+                    {/* {currentWorker.admin === 1 && <button id="add_worker_button" onClick={e => handleAddWorkerButtonClicked(e)}>Add WB Wood Owner to this Customer</button>} */}
+                    {currentWorker.admin === 1 && <button id="deletion_button" onClick={e => handleDeleteButtonClicked(e)}>Delete this Customer</button>}
+                </div>
             </div>
         </>
     )

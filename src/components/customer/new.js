@@ -85,11 +85,11 @@ const New = () => {
                             <input type="text" defaultValue={customer.company} id="company" onChange={e => handleChange(e)}></input>
                         </label>
                         <label>
-                            Contact: 
+                            Contact: <span className='red_asterisk'>*</span>
                             <input type="text" defaultValue={customer.contact_name} id="contact_name" onChange={e => handleChange(e)}></input>
                         </label>
                         <label>
-                            Workers: 
+                            WB Wood Owners: <span className='red_asterisk'>*</span>
                             <div id="multi_select">
                             <MultiSelect 
                                 options={workers.select_tag_worker_list}

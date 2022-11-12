@@ -35,7 +35,7 @@ const Index = () => {
                 accessor: 'category',
               },
               {
-                Header: 'Workers',
+                Header: 'WB Wood Owners',
                 accessor: 'workers',
               },
               {
