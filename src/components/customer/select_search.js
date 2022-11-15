@@ -1,10 +1,10 @@
 import { useCombobox } from 'downshift';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const AutoCompleteSearch = (props) => {
 
     const customers = props.customers; //We will have passed this to the DropdownCombobox component through props so we don't have to wait for useSelector to load, preventing complications
-    const [inputItems, setInputItems] = useState(customers);
+    const [inputItems, setInputItems] = useState([...new Set(customers)]);
 
     const {
       isOpen,
@@ -22,6 +22,7 @@ const AutoCompleteSearch = (props) => {
             item.toLowerCase().startsWith(inputValue.toLowerCase()),
           ),
         )
+        props.setCustomer(oldState => ({...oldState, [props.key_name]: inputValue}))
       },
     })
     return (

@@ -159,18 +159,28 @@ label {
 /* ------------------------------------------------------------------------- */
 
 #comboboxStyles{
-  display: 'inline-block';
-  margin-left: '5px';
+  display: inline-block;
+  margin-left: 10px;
+  input{
+    display: inline;
+    margin: auto;
+  }
+  button{
+    display: inline;
+  }
 }
+
+
 
 #menuStyles {
   max-height: 150;
-  max-width: 300;
-  overflow-y: 'scroll';
-  background-color: '#eee';
+  margin-left: 10px;
+  max-width: 10%;
+  overflow-y: scroll;
+  background-color: wheat;
   padding: 0;
-  list-style: 'none';
-  position: 'relative';
+  list-style: none;
+  position: relative;
 }
 
 /* ------------------------------------------------------------------------- */

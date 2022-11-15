@@ -4,13 +4,15 @@ import {searchCustomers, revertSearchedCustomers} from '../../actions/customer.j
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 
+import AutoCompleteSearch from "./select_search";
+
 import '../components.scss';
 
 const Search = () => {
     const [customer, setCustomer] = useState(
         {
          company: "",
-         customer_name: "",
+         contact_name: "",
          category: ""
         });
 
@@ -42,32 +44,31 @@ const Search = () => {
         
     }
 
-    const handleChange = (e) => {
-        //Handle change for all elements that aren't the Select component
-        const newKey = e.target.id;
-        const newValue = e.target.value;
-        setCustomer(oldState => ({ ...oldState, [newKey]: newValue}));
+    const handleCategoryChange = (e) => {
+        //Handle change for the category component
+       setCustomer(oldState => ({ ...oldState, category: e.target.value}));
     }
 
     const handleSelect = (e) => {
         //Handle change for the Select component
         setSelected(e);
     }
+
+    const autoSearchItemsMaker = (tag) => {
+        return tag === "company" ? customers.customers.map(customer => customer.company)
+        : 
+        customers.customers.map(customer => customer.contact_name)
+    }
+
     return(
         <>
             <h1>Search</h1>
             <form id="customer_form" onSubmit={handleSubmit}>
-                <label>
-                    Company: 
-                    <input type="text" defaultValue={customer.company} id="company" onChange={e => handleChange(e)}></input>
-                </label>
-                <label>
-                    Contact: 
-                    <input type="text" defaultValue={customer.customer_name} id="customer_name" onChange={e => handleChange(e)}></input>
-                </label>
+                <AutoCompleteSearch title={"Company"} key_name={"company"} customers={autoSearchItemsMaker("company")} setCustomer={setCustomer} />
+                <AutoCompleteSearch title={"Contact"} key_name={"contact_name"} customers={autoSearchItemsMaker("contact_name")} setCustomer={setCustomer} />
                 <label>
                     Category: 
-                    <select id="category"onChange={e => handleChange(e)} defaultValue={'Default'}>
+                    <select id="category"onChange={e => handleCategoryChange(e)} defaultValue={'Default'}>
                         <option value="Default"> -- no choice -- </option>
                         <option value="EU">EU</option>
                         <option value="REB">REB</option>

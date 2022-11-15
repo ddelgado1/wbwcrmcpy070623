@@ -51,15 +51,15 @@ const New = () => {
                 <>
                     <form id="worker_form" onSubmit={e => handleSubmit(e)}>
                         <label>
-                            Worker Name: 
+                            Worker Name: <span className='red_asterisk'>*</span>
                             <input type="text" defaultValue={worker.name} id="name" onChange={e => handleChange(e)}></input>
                         </label>
                         <label>
-                            Worker Email:  
+                            Worker Email:  <span className='red_asterisk'>*</span>
                             <input type="text" defaultValue={worker.email} id="email" onChange={e => handleChange(e)}></input>
                         </label>
                         <label>
-                            Confirmation Email: 
+                            Confirmation Email: <span className='red_asterisk'>*</span>
                             <input type="text" defaultValue={worker.confirmation_email} id="confirmation_email" onChange={e => handleChange(e)}></input>
                         </label>
                         <label>

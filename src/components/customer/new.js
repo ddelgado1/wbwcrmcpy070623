@@ -48,7 +48,7 @@ const New = () => {
     useEffect(() => {
         //This useEffect is for determining if we've had our workersTables changed so that we can render our show and not worry about the index page having a lack of workers in it
         if (hasBeenRenderedRef.current === true && Object.keys(errors).length === 0){
-           navigate("/customer");
+           navigate("/contact");
         }
         else{
             hasBeenRenderedRef.current = false
