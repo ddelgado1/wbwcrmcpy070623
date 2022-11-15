@@ -97,10 +97,10 @@ const Show = () => {
         
     }
 
-    // const handleAddWorkerButtonClicked = (event) => {
-    //     //Sends to a page where they can add a worker to the current customer
-    //     navigate("/add_worker");
-    // }
+    const handleAddWorkerButtonClicked = (event) => {
+        //Sends to a page where they can add a worker to the current customer
+        navigate("/add_worker");
+    }
 
     const checkIfHasAccess = () => {
         //This function will determine if the user has access to add notes
@@ -126,7 +126,7 @@ const Show = () => {
                     {checkIfHasAccess() && <button onClick={e => handleSubmission(e)}>Submit Notes</button>}
                 </div>
                 <div id="buttons_div">
-                    {/* {currentWorker.admin === 1 && <button id="add_worker_button" onClick={e => handleAddWorkerButtonClicked(e)}>Add WB Wood Owner to this Customer</button>} */}
+                    {currentWorker.admin === 1 && <button id="add_worker_button" onClick={e => handleAddWorkerButtonClicked(e)}>Add WB Wood Owner to this Customer</button>}
                     {currentWorker.admin === 1 && <button id="deletion_button" onClick={e => handleDeleteButtonClicked(e)}>Delete this Customer</button>}
                 </div>
             </div>

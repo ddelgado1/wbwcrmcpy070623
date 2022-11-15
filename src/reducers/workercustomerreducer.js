@@ -12,11 +12,11 @@ const workerCustomerReducer = createReducer(initialState, (builder) => {
         state.worker_customers_succeeded = true;
       })
       .addCase("CREATE_NEW_WORKER_CUSTOMERS", (state, action) => {
-        state.worker_customers = state.worker_customers.concat(action.payload)
+        state.worker_customers = state.worker_customers.concat(action.payload);
       })
-    //   .addCase("ADDED_WORKERS", (state, action) => {
-    //     state.worker_customers.concat(action.payload);
-    //   })
+      .addCase("ADDED_WORKER", (state, action) => {
+        state.worker_customers.push(action.payload[0]);
+      })
       .addDefaultCase((state,action) => {})
 })
 

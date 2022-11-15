@@ -49,6 +49,7 @@ const New = () => {
         if (selectedWorker.admin === 1){
             return(
                 <>
+                    <h1>Add a WB Wood Worker to the system</h1>
                     <form id="worker_form" onSubmit={e => handleSubmit(e)}>
                         <label>
                             Worker Name: <span className='red_asterisk'>*</span>
