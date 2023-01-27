@@ -1,4 +1,4 @@
-This is the front end for the WBW CRM
+This is the front end for the WBW CRM.
 
 The purpose of this is to display each page that the user sees on the website. Currently, it's housed at https://aquamarine-dasik-f163ae.netlify.app/
 
