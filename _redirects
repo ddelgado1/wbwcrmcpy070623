@@ -1,5 +1,0 @@
-Redirects from what the browser requests to what we serve
-/customers              /
-/new_customer  /customer
-/search              /new_worker
-/calendar            https://www.aquamarine-dasik-f163ae.netlify.app/
