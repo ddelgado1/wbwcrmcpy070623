@@ -48,28 +48,36 @@ const New = () => {
     if (Object.keys(selectedWorker).length !== 0){
         if (selectedWorker.admin === 1){
             return(
-                <>
-                    <h1>Add a WB Wood Worker to the system</h1>
+                <div className='form-container'>
+                    <h1 className="form-title">Add a WB Wood Worker to the system</h1>
                     <form id="worker_form" onSubmit={e => handleSubmit(e)}>
-                        <label>
-                            Worker Name: <span className='red_asterisk'>*</span>
-                            <input type="text" defaultValue={worker.name} id="name" onChange={e => handleChange(e)}></input>
-                        </label>
-                        <label>
-                            Worker Email:  <span className='red_asterisk'>*</span>
-                            <input type="text" defaultValue={worker.email} id="email" onChange={e => handleChange(e)}></input>
-                        </label>
-                        <label>
-                            Confirmation Email: <span className='red_asterisk'>*</span>
-                            <input type="text" defaultValue={worker.confirmation_email} id="confirmation_email" onChange={e => handleChange(e)}></input>
-                        </label>
-                        <label>
-                            Are they an admin?: <input type="checkbox" checked={checked} id="admin" onChange={e => handleChange(e)} />
-                        </label>
+                        <div class="form-field">
+                            <label>
+                                Worker Name: <span className='red_asterisk'>*</span>
+                                <input type="text" defaultValue={worker.name} id="name" onChange={e => handleChange(e)}></input>
+                            </label>
+                        </div>    
+                        <div class="form-field">
+                            <label>
+                                Worker Email:  <span className='red_asterisk'>*</span>
+                                <input type="text" defaultValue={worker.email} id="email" onChange={e => handleChange(e)}></input>
+                            </label>
+                        </div>    
+                        <div class="form-field">
+                            <label>
+                                Confirmation Email: <span className='red_asterisk'>*</span>
+                                <input type="text" defaultValue={worker.confirmation_email} id="confirmation_email" onChange={e => handleChange(e)}></input>
+                            </label>
+                        </div>    
+                        <div class="form-field">
+                            <label>
+                                Are they an admin?: <input type="checkbox" checked={checked} id="admin" onChange={e => handleChange(e)} />
+                            </label>
+                        </div>
                         <button type="submit" onClick={e => handleSubmit(e)} className="submit_new_button">Submit</button>
                     </form>
                     <h3 className='new_messages'>{renderedAlready === true && Object.keys(errors).length === 0 ? "Worker created successfully" : null}</h3>
-                </>
+                </div>
             )
         }
         else{

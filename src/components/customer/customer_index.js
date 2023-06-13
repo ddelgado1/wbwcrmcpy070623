@@ -81,7 +81,7 @@ const Index = () => {
                     customer_name: individual_customer.contact_name,
                     category: individual_customer.category,
                     workers: workers_array,
-                    customer_button: <button onClick={e => handleClick(e, individual_customer)}>Click To see</button>
+                    customer_button: <button className='see_contact_button' onClick={e => handleClick(e, individual_customer)}>See Contact</button>
                 }
             )
         }))

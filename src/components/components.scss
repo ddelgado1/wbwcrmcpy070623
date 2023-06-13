@@ -4,35 +4,35 @@
 .index {
   /* The main div for the customer_index component */
   margin-top: 2%;
- 
+
 }
 
-table {
-  /* The table being rendered itself */
-  width: 50%;
-  max-height: 200px;
-  border-spacing: 0;
-  border: 1px solid black;
+// table {
+//   /* The table being rendered itself */
+//   width: 50%;
+//   max-height: 200px;
+//   border-spacing: 0;
+//   border: 1px solid black;
 
-  tr {
-    :last-child {
-      td {
-        border-bottom: 0;
-      }
-    }
-  }
+//   tr {
+//     :last-child {
+//       td {
+//         border-bottom: 0;
+//       }
+//     }
+//   }
 
-  th,
-  td {
-    margin: 0;
-    padding: 0.5rem;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    text-align: center;
-  }
-}
+//   th,
+//   td {
+//     margin: 0;
+//     padding: 0.5rem;
+//     border-bottom: 1px solid black;
+//     border-right: 1px solid black;
+//     text-align: center;
+//   }
+// }
 
-#tableDiv{
+#tableDiv {
   /* This is the main div for the table itself */
   width: 100%;
   display: flex;
@@ -40,19 +40,201 @@ table {
   align-items: center;
 }
 
-.pagination{
+.pagination {
   padding: 10px;
+  margin-bottom: 2%;
 }
 
 
 
+table,
+th,
+td {
+  padding: 1rem;
+  border-collapse: collapse;
+}
+
+table {
+  margin: auto;
+  width: 82vw;
+  height: 90vh;
+  background-color: #1111;
+  backdrop-filter: blur(7px);
+  box-shadow: 0 .4rem .8rem #0005;
+  border-radius: .8rem;
+  margin-bottom: 5vh;
+  overflow: hidden;
+}
+
+thead {
+  tr:first-of-type {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    background-color: #fff5;
+    font-size: 150%;
+  }
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
+}
+
+//This below is for the button on the table that takes you to the individual contact page
+.see_contact_button {
+  background-color: #fff;
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  color: #0d172a;
+  display: inline-block;
+  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 600;
+  text-decoration: none #0d172a solid;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+
+
+.see_contact_button:hover {
+  background-color: #acff;
+}
+
 /* ------------------------------------------------------------------------- */
 
-/* new.js for workers and customers */
+/* new.js for customers and workers */
 
 /* ------------------------------------------------------------------------- */
 
-label, input {
+.form-title {
+  text-align: center;
+}
+
+/* Form container */
+.form-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form field container */
+.form-field-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+/* Form field */
+.form-field {
+  flex: 1 1 50%;
+  /* Two columns, adjust as needed */
+  margin-bottom: 10px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* Form button */
+.form-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3F3B5C;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.form-button:hover {
+  background-color: #3F3B3C;
+}
+
+/* Custom select container */
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  /* Adjust the width as needed */
+}
+
+/* Hide default arrow */
+.custom-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Custom select arrow */
+.custom-select::after {
+  content: "\25BC";
+  /* Unicode for down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #555;
+  pointer-events: none;
+}
+
+/* Custom select styles on focus */
+.custom-select select:focus {
+  outline: none;
+  border-color: #888;
+}
+
+/* Custom select styles on hover */
+.custom-select:hover select {
+  border-color: #999;
+}
+
+/* Custom select styles when option is selected */
+.custom-select select option:checked {
+  background-color: #e5e5e5;
+}
+
+/* Custom select styles for dropdown */
+.custom-select select::-ms-expand {
+  display: none;
+  /* Hide default arrow in IE/Edge */
+}
+
+label,
+input {
   /* We use labels and inputs in the new page so we do stuff to it here */
   display: block;
 }
@@ -63,21 +245,18 @@ label {
   padding: 1em;
 }
 
-.red_asterisk{
+.red_asterisk {
   color: red;
 }
 
-.submit_new_button{
+.submit_new_button {
   /* The submit button for the new customer */
   margin-left: 1em;
 }
 
-#multi_select{
-  /* The multi select element from the new page */
-  max-width: 10em;
-}
 
-#admin{
+
+#admin {
   display: inline;
   width: 100px;
   margin-left: -40px;
@@ -85,7 +264,7 @@ label {
 
 
 
-.new_messages{
+.new_messages {
   /* The errors that occur on the new page */
   margin-left: 10px;
 }
@@ -98,39 +277,39 @@ label {
 
 /* ------------------------------------------------------------------------- */
 
-.show_h2_div{
+.show_h2_div {
   /* The individual divs from the show page */
   margin-left: 100px;
 }
 
-#deletion_button{
+#deletion_button {
   /* The deletion button itself */
   position: absolute;
   left: 50%;
   -ms-transform: translate(-50%, 0%);
-  transform: translate(-50%,0%);
+  transform: translate(-50%, 0%);
 
 }
 
-#customer_chosen_notes{
+#customer_chosen_notes {
   /* The notes of the chosen customer */
   white-space: pre-line;
   line-height: 30px;
 }
 
-.inaccessible{
+.inaccessible {
   /* If the main section of the show page is inaccessible, we do this to it */
   pointer-events: none;
   opacity: 20%;
 }
 
-.confirm_invisible{
+.confirm_invisible {
   /* If the confirm box of the show page is invisible, we do this to it */
   pointer-events: none;
   opacity: 0%;
 }
 
-#confirm_box{
+#confirm_box {
   /* The confirm box itself */
   width: 30%;
   height: 100px;
@@ -139,18 +318,18 @@ label {
   background-color: tan;
 }
 
-.confirm_box_button{
+.confirm_box_button {
   /* The class for the buttons in the confirm box */
   margin: 10px;
   width: 100px;
 }
 
-#confirm_message{
+#confirm_message {
   /* The actual confirm message text */
   color: black;
 }
 
-#select_search{
+#select_search {
   width: 300px;
 }
 
@@ -158,14 +337,16 @@ label {
 
 /* ------------------------------------------------------------------------- */
 
-#comboboxStyles{
+#comboboxStyles {
   display: inline-block;
   margin-left: 10px;
-  input{
+
+  input {
     display: inline;
     margin: auto;
   }
-  button{
+
+  button {
     display: inline;
   }
 }
@@ -189,12 +370,12 @@ label {
 
 /* ------------------------------------------------------------------------- */
 
-#Forbidden{
+#Forbidden {
   text-align: center;
 }
 
 /* home.js */
 
-#center{
+#center {
   text-align: center;
 }
