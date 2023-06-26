@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useMsal } from "@azure/msal-react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import logo from './'
 /**
  * Renders the header with a sign in/out button as well as all of the page links
  */
@@ -70,6 +71,7 @@ export const PageLayout = (props) => {
                     <div>
                         <Navbar >
                             <div className="app_header">
+                            <img src={logo} alt="Company Logo" style={{width: "30px", height: "30px"}}/>
                                 <h3 onClick={e => resetSearch(e)}><Link to="contacts">View All Contacts</Link></h3>
                                 {/* <h3><Link to="calendar">View Calendar</Link></h3> */}
                                 {workers.current_worker.admin === 1 && <h3 onClick={e => resetSearch(e)}><Link to="new_contact">Create a New Contact</Link></h3>}
