@@ -36,7 +36,6 @@ export const getAzureUserInfo = (accessToken) => dispatch => {
           'Prefer' : 'outlook.body-content-type="text"'
     }})
     .then(response => {
-      console.log(response)
       dispatch({type: 'USER_ADMIN_VALUE', payload: response.data.value})})
     .catch(err => dispatch({type: 'ERROR_CAUGHT', payload: {err_message: "Can't find calendar for account", err_code: err.response.request.status, err_value: err.response.request.statusText}}));
 }
