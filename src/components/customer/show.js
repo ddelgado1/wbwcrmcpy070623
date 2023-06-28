@@ -37,19 +37,23 @@ const Show = () => {
         for (const key of Object.keys(customerChosen)){
             if (key !== "notes" && key !== "id" && customerChosen[key] !== ""){
                 divs.push(
-                    <div key={key + 'div'} className='show_h2_div'>
-                        <h2>{key.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}</h2>
-                        <h3 key={key + 'h3'}>{customerChosen[key]}</h3>
+                    <div key={key + 'div'} className='rendered-content__item'>
+                        <h2 className='rendered-content__title'>{key.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}</h2>
+                        <h3 key={key + 'h3'} className='rendered-content__content'>{customerChosen[key]}</h3>
                     </div>
                 )
             } 
             if (key === "contact_title"){
                 divs.push(
-                <div key="workers" className='show_h2_div'>
-                    <h2>WB Wood Owners</h2>
-                    {selectedWorkers.map((worker, index) =>{
-                        return(<h3 key={worker.value + `${index}`}>{worker.label}</h3>)
-                    })}
+                <div key="workers" className='rendered-content__item'>
+                    <h2 className='rendered-content__title'>WB Wood Owners</h2>
+                    <div id="workers-list-div">
+                        {selectedWorkers.map((worker, index) =>{
+                            return(<h3 className="rendered-content__content" key={worker + `${index}`}>{worker}</h3>)
+                        })}
+                    </div>
+                    
+                    
                 </div>
                 )
             }
@@ -97,10 +101,10 @@ const Show = () => {
         
     }
 
-    const handleAddWorkerButtonClicked = (event) => {
-        //Sends to a page where they can add a worker to the current customer
-        navigate("/add_worker");
-    }
+    // const handleAddWorkerButtonClicked = (event) => {
+    //     //Sends to a page where they can add a worker to the current customer
+    //     navigate("/add_worker");
+    // }
 
     const checkIfHasAccess = () => {
         //This function will determine if the user has access to add notes
@@ -117,17 +121,18 @@ const Show = () => {
             </div>
 
             <div id="rest_of_show" className={mainDivAccessible}>
-                <div>{renderMaker().map(element => element)}</div>
-                <div key={`notes_${customerChosen.id}`} className='show_h2_div'>
+                <div className='rendered-content'>{renderMaker().map(element => element)}</div>
+                <div key={`notes_${customerChosen.id}`} id="notes-div">
                     <h2>Notes:</h2>
                     <h3 id="customer_chosen_notes">{customerChosen.notes}</h3>
                     {checkIfHasAccess() && <textarea id='notes_textarea' defaultValue={currentNotesInTextArea} onChange={e => handleChangeInNotes(e)}></textarea>}
                     <br/>
-                    {checkIfHasAccess() && <button onClick={e => handleSubmission(e)}>Submit Notes</button>}
+                    {checkIfHasAccess() && <button onClick={e => handleSubmission(e)} className='form-button'>Submit Notes</button>}
                 </div>
+                <br/>
                 <div id="buttons_div">
-                    {currentWorker.admin === 1 && <button id="add_worker_button" onClick={e => handleAddWorkerButtonClicked(e)}>Add WB Wood Owner to this Customer</button>}
-                    {currentWorker.admin === 1 && <button id="deletion_button" onClick={e => handleDeleteButtonClicked(e)}>Delete this Customer</button>}
+                    {/* {currentWorker.admin === 1 && <button id="add_worker_button" className='form-button' onClick={e => handleAddWorkerButtonClicked(e)}>Add WB Wood Owner to this Customer</button>} */}
+                    {currentWorker.admin === 1 && <button id="deletion_button" className='form-button' onClick={e => handleDeleteButtonClicked(e)}>Delete this Customer</button>}
                 </div>
             </div>
         </>

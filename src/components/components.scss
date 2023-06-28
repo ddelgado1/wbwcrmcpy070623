@@ -7,30 +7,6 @@
 
 }
 
-// table {
-//   /* The table being rendered itself */
-//   width: 50%;
-//   max-height: 200px;
-//   border-spacing: 0;
-//   border: 1px solid black;
-
-//   tr {
-//     :last-child {
-//       td {
-//         border-bottom: 0;
-//       }
-//     }
-//   }
-
-//   th,
-//   td {
-//     margin: 0;
-//     padding: 0.5rem;
-//     border-bottom: 1px solid black;
-//     border-right: 1px solid black;
-//     text-align: center;
-//   }
-// }
 
 #tableDiv {
   /* This is the main div for the table itself */
@@ -52,12 +28,14 @@ th,
 td {
   padding: 1rem;
   border-collapse: collapse;
+  vertical-align: top;
 }
 
 table {
   margin: auto;
   width: 82vw;
-  height: 90vh;
+  max-height: 90vh;
+
   background-color: #1111;
   backdrop-filter: blur(7px);
   box-shadow: 0 .4rem .8rem #0005;
@@ -277,24 +255,60 @@ label {
 
 /* ------------------------------------------------------------------------- */
 
-.show_h2_div {
-  /* The individual divs from the show page */
-  margin-left: 100px;
+.rendered-content {
+  display: flex;
+  flex-wrap: wrap;
+
+  .rendered-content__item {
+    width: 200px;
+    height: 200px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    margin: 30px;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    .rendered-content__title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .rendered-content__content {
+      font-size: 14px;
+      color: #333;
+      flex-grow: 1;
+      /* Allow content to expand vertically */
+    }
+  }
 }
 
-#deletion_button {
-  /* The deletion button itself */
-  position: absolute;
-  left: 50%;
-  -ms-transform: translate(-50%, 0%);
-  transform: translate(-50%, 0%);
+#workers-list-div {
+  overflow-y: scroll;
+  max-height: 80%;
+}
 
+#notes-div {
+  margin: 30px;
 }
 
 #customer_chosen_notes {
   /* The notes of the chosen customer */
   white-space: pre-line;
   line-height: 30px;
+}
+
+#notes_textarea {
+  width: 60%;
+  height: 150px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  /* Add more styles as needed */
 }
 
 .inaccessible {
@@ -307,6 +321,15 @@ label {
   /* If the confirm box of the show page is invisible, we do this to it */
   pointer-events: none;
   opacity: 0%;
+}
+
+#deletion_button {
+  /* The deletion button itself */
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+
 }
 
 #confirm_box {
@@ -333,36 +356,159 @@ label {
   width: 300px;
 }
 
+#buttons_div {
+  display: flex;
+  flex-direction: column;
+}
+
+#buttons_div button {
+  margin-left: 100px;
+  margin-bottom: 10%;
+  width: 30%;
+}
+
+
+
+
 /* search.js */
 
 /* ------------------------------------------------------------------------- */
 
-#comboboxStyles {
-  display: inline-block;
-  margin-left: 10px;
 
-  input {
-    display: inline;
-    margin: auto;
-  }
-
-  button {
-    display: inline;
-  }
+#search-title {
+  text-align: center;
 }
-
 
 
 #menuStyles {
-  max-height: 150;
-  margin-left: 10px;
-  max-width: 10%;
-  overflow-y: scroll;
-  background-color: wheat;
-  padding: 0;
-  list-style: none;
   position: relative;
+  margin-left: 10px;
+  font-size: 16px;
+  color: #333;
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+
 }
+
+
+#menuStyles::-webkit-scrollbar {
+  width: 10px;
+  /* Width of the scrollbar */
+}
+
+
+#menuStyles::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+  /* Background color of the track */
+}
+
+#menuStyles::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Color of the thumb */
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.autocomplete {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+
+  &__input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 100%;
+    width: 20%;
+    list-style: none;
+    padding: 0;
+    margin: 4px 0;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+
+    &.open {
+      display: block;
+    }
+  }
+
+  &__item {
+    padding: 8px;
+
+    &.highlighted {
+      background-color: #f2f2f2;
+    }
+  }
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+
+  &__group {
+    margin-bottom: 20px;
+
+    & label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    & input,
+    & textarea,
+    & select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+    }
+
+    & input {
+      margin-left: 10%;
+      width: 190%;
+    }
+  }
+
+  &__button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0069d9;
+    }
+  }
+}
+
+
 
 /* ------------------------------------------------------------------------- */
 

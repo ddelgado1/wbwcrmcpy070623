@@ -62,28 +62,34 @@ const Search = () => {
 
     return(
         <>
-            <h1>Search</h1>
-            <form id="customer_form" onSubmit={handleSubmit}>
-                <AutoCompleteSearch title={"Company"} key_name={"company"} customers={autoSearchItemsMaker("company")} setCustomer={setCustomer} />
-                <AutoCompleteSearch title={"Contact"} key_name={"contact_name"} customers={autoSearchItemsMaker("contact_name")} setCustomer={setCustomer} />
-                <label>
-                    Category: 
-                    <select id="category"onChange={e => handleCategoryChange(e)} defaultValue={'Default'}>
-                        <option value="Default"> -- no choice -- </option>
-                        <option value="EU">EU</option>
-                        <option value="REB">REB</option>
-                        <option value="A&D">A&D</option>
-                        <option value="PMfirm">PMfirm</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </label>
-                <label>
-                    WB Wood Owners: 
-                    <div id="select_search">
-                        <Select options={search_select_workers} onChange={e => handleSelect(e)} />
-                    </div>
-                </label>
-            <button type="submit" onClick={e => handleSubmit(e)} className="submit_new_button">Submit</button>
+            <h1 id="search-title">Search</h1>
+            <form id="customer_form" onSubmit={handleSubmit} className='search-form'>
+                <div className='search-form__group'>
+                    <AutoCompleteSearch className="custom-select" title={"Company"} key_name={"company"} customers={autoSearchItemsMaker("company")} setCustomer={setCustomer} />
+                    <AutoCompleteSearch className="custom-select" title={"Contact"} key_name={"contact_name"} customers={autoSearchItemsMaker("contact_name")} setCustomer={setCustomer} />
+                </div>
+                <div className='search-form__group'>
+                    <label>
+                        Category: 
+                        <select id="category"onChange={e => handleCategoryChange(e)} defaultValue={'Default'}>
+                            <option value="Default"> -- no choice -- </option>
+                            <option value="EU">EU</option>
+                            <option value="REB">REB</option>
+                            <option value="A&D">A&D</option>
+                            <option value="PMfirm">PMfirm</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </label>
+                </div>
+                <div className='search-form__group'>
+                    <label>
+                        WB Wood Owners: 
+                        <div id="select_search">
+                            <Select options={search_select_workers} onChange={e => handleSelect(e)} />
+                        </div>
+                    </label>
+                </div>
+            <button type="submit" onClick={e => handleSubmit(e)} className="search-form__button">Submit</button>
             </form>
             <h2 className='new_messages'>{customers.search_message}</h2>
         </>

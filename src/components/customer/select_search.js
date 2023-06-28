@@ -8,10 +8,10 @@ const AutoCompleteSearch = (props) => {
 
     const {
       isOpen,
-      getToggleButtonProps,
       getLabelProps,
       getMenuProps,
       getInputProps,
+      selectedItem,
       highlightedIndex,
       getItemProps,
     } = useCombobox({
@@ -28,25 +28,29 @@ const AutoCompleteSearch = (props) => {
     return (
       <div>
         <label {...getLabelProps()}>{props.title}:</label>
-        <div id="comboboxStyles">
-          <input {...getInputProps()} />
-          <button
+        <div id="comboboxStyles" className='autocomplete'>
+          <input {...getInputProps()} className='autocomplete__input' />
+          
+          {/* <button
             type="button"
+            className="downshift-toggle-button"
             {...getToggleButtonProps()}
             aria-label="toggle menu"
           >
-            &#8595;
-          </button>
+            {'Select an option'}
+          </button> */}
         </div>
-        <ul {...getMenuProps()} id="menuStyles">
+        <ul {...getMenuProps()} id="menuStyles" className={`autocomplete__menu ${isOpen ? 'open' : ''}`}>
           {isOpen &&
             inputItems.map((item, index) => (
               <li
-                style={
-                  highlightedIndex === index ? {backgroundColor: '#bde4ff'} : {}
-                }
                 key={`${item}${index}`}
                 {...getItemProps({item, index})}
+                className={`autocomplete__item ${
+                  highlightedIndex === index ? 'downshift-highlighted-item' : ''
+                } ${
+                  selectedItem === item ? 'downshift-selected-item' : ''
+                }`}
               >
                 {item}
               </li>

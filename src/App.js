@@ -14,8 +14,8 @@ const Index = lazy(() => import('./components/customer/customer_index.js'));
 const NewCustomer = lazy(() => import('./components/customer/new.js'));
 const Show = lazy(() => import('./components/customer/show.js'));
 const Search = lazy(() => import('./components/customer/search.js'));
-const AddWorkerToCustomer = lazy(() => import('./components/customer/add_worker.js'));
-const NewWorker = lazy(() => import('./components/worker/new.js'));
+// const AddWorkerToCustomer = lazy(() => import('./components/customer/add_worker.js'));
+// const NewWorker = lazy(() => import('./components/worker/new.js'));
 // const OutlookCalendarDisplay = lazy(() => import('./components/calendar/calendarDisplay.js'));
 // const OutlookCalendarEventCreate = lazy(() => import('./components/calendar/createEvent.js'));
 const Home = lazy(() => import('./components/home.js'));
@@ -41,8 +41,8 @@ const App = () => {
             <Route path="new_contact" element={<NewCustomer />} />
             <Route path="contact" element={<Show />} />
             <Route path="search" element={<Search />} />
-            <Route path="new_worker" element={<NewWorker />} />
-            <Route path="add_worker" element={<AddWorkerToCustomer />} />
+            {/* <Route path="new_worker" element={<NewWorker />} /> */}
+            {/* <Route path="add_worker" element={<AddWorkerToCustomer />} /> */}
             {/* <Route path="calendar" element={<OutlookCalendarDisplay />} /> */}
             {/* <Route path="event_create" element={<OutlookCalendarEventCreate />} /> */}
           </Routes>

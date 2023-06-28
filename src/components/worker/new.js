@@ -51,25 +51,25 @@ const New = () => {
                 <div className='form-container'>
                     <h1 className="form-title">Add a WB Wood Worker to the system</h1>
                     <form id="worker_form" onSubmit={e => handleSubmit(e)}>
-                        <div class="form-field">
+                        <div className="form-field">
                             <label>
                                 Worker Name: <span className='red_asterisk'>*</span>
                                 <input type="text" defaultValue={worker.name} id="name" onChange={e => handleChange(e)}></input>
                             </label>
                         </div>    
-                        <div class="form-field">
+                        <div className="form-field">
                             <label>
                                 Worker Email:  <span className='red_asterisk'>*</span>
                                 <input type="text" defaultValue={worker.email} id="email" onChange={e => handleChange(e)}></input>
                             </label>
                         </div>    
-                        <div class="form-field">
+                        <div className="form-field">
                             <label>
                                 Confirmation Email: <span className='red_asterisk'>*</span>
                                 <input type="text" defaultValue={worker.confirmation_email} id="confirmation_email" onChange={e => handleChange(e)}></input>
                             </label>
                         </div>    
-                        <div class="form-field">
+                        <div className="form-field">
                             <label>
                                 Are they an admin?: <input type="checkbox" checked={checked} id="admin" onChange={e => handleChange(e)} />
                             </label>

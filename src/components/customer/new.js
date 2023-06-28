@@ -81,19 +81,19 @@ const New = () => {
                     <h1 className="form-title">Create a new Contact</h1>
                     <form id="customer_form" onSubmit={handleSubmit}>
                         <div className='form-field-container'>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Company: <span className='red_asterisk'>*</span>
                                     <input type="text" defaultValue={customer.company} id="company" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Contact: <span className='red_asterisk'>*</span>
                                     <input type="text" defaultValue={customer.contact_name} id="contact_name" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     WB Wood Owners: <span className='red_asterisk'>*</span>
                                     <div id="multi_select">
@@ -108,49 +108,42 @@ const New = () => {
                                     
                                 </label>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Title: 
                                     <input type="text" id="title" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Email: 
                                     <input type="text" defaultValue={customer.email} id="email" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
-                        <div class="form-field">
+                        <div className="form-field">
                             <label>
                                 Number: 
                                 <input type="text" defaultValue={customer.number} id="number" onChange={e => handleChange(e)}></input>
                             </label>
                         </div>
-                        <div class="form-field">
-                            <label>
-                                Old Address: 
-                                <input type="text" defaultValue={customer.old_address} id="old_address" onChange={e => handleChange(e)}></input>
-                            </label>
-                        </div>
-
-                        <div class="form-field">
+                        <div className="form-field">
                             <label>
                                 Old Address: 
                                 <input type="text" defaultValue={customer.old_address} id="old_address" onChange={e => handleChange(e)}></input>
                             </label>
                         </div>
                         
-                        <div class="form-field">
+                        <div className="form-field">
                             <label>
                                 New Address: 
                                 <input type="text" defaultValue={customer.new_address} id="new_address" onChange={e => handleChange(e)}></input>
                             </label>
                         </div>
                        
-                        <div class="form-field">
+                        <div className="form-field">
                             <label>
                                 Category: 
-                                <div class="custom-select">
+                                <div className="custom-select">
                                     <select id="category" onChange={e => handleChange(e)}>
                                         <option value="EU">EU</option>
                                         <option value="REB">REB</option>
@@ -165,28 +158,28 @@ const New = () => {
                         </div>
 
                         <div className='form-field-container'>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Broker Company: 
                                     <input type="text" defaultValue={customer.broker_company} id="broker_company" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
                             
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Broker Name: 
                                     <input type="text" defaultValue={customer.broker_name} id="broker_name" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
                             
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Broker Number: 
                                     <input type="text" defaultValue={customer.broker_number} id="broker_number" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
                             
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Broker Email: 
                                     <input type="text" defaultValue={customer.broker_email} id="broker_email" onChange={e => handleChange(e)}></input>
@@ -196,25 +189,25 @@ const New = () => {
                         </div>
                         
                         <div className='form-field-container'>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Architect Company: 
                                     <input type="text" defaultValue={customer.architect_company} id="architect_company" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Architect Name: 
                                     <input type="text" defaultValue={customer.architect_name} id="architect_name" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Architect Number: 
                                     <input type="text" defaultValue={customer.architect_number} id="architect_number" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Architect Email: 
                                     <input type="text" defaultValue={customer.architect_email} id="architect_email" onChange={e => handleChange(e)}></input>
@@ -223,26 +216,26 @@ const New = () => {
                         </div>
 
                         <div className='form-field-container'>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Consultant Company: 
                                     <input type="text" defaultValue={customer.consultant_company} id="consultant_company" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
 
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Consultant Name: 
                                     <input type="text" defaultValue={customer.consultant_name} id="consultant_name" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Consultant Number: 
                                     <input type="text" defaultValue={customer.consultant_number} id="consultant_number" onChange={e => handleChange(e)}></input>
                                 </label>
                             </div>
-                            <div class="form-field">
+                            <div className="form-field">
                                 <label>
                                     Consultant Email: 
                                     <input type="text" defaultValue={customer.consultant_email} id="consultant_email" onChange={e => handleChange(e)}></input>

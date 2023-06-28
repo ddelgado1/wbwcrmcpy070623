@@ -4,7 +4,8 @@ const initialState = {
     workers: [],
     workers_succeeded: false, //The purpose of this is that when we start the webpage, if we have no workers at all, we run the risk of having it load forever. Instead, we'll change this and load based on if this is true or not instead of if there are workers or not
     select_tag_worker_list: [],
-    current_worker: {}
+    current_worker: {},
+    picture: ""
 }
 
 const workerReducer = createReducer(initialState, (builder) => {
@@ -21,6 +22,14 @@ const workerReducer = createReducer(initialState, (builder) => {
       .addCase("SET_CURRENT_WORKER", (state, action) => {
         state.current_worker = action.payload;
       })
+      .addCase("WORKER_DESTROYED", (state, action) => {
+        state.workers = state.workers.filter(worker => worker.id !== action.payload);
+        state.select_tag_worker_list = state.select_tag_worker_list.filter(worker => worker.value !== action.payload);
+      })
+      // .addCase("GET_PROFILE_PICTURE", (state, action) => {
+      //   console.log(action)
+      //   state.picture = action.payload
+      // })
       .addDefaultCase((state,action) => {})
 })
 

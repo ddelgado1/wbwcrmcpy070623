@@ -27,3 +27,27 @@ export const setCurrentWorker = (worker_information) => dispatch => {
   dispatch({type: 'SET_CURRENT_WORKER', payload: worker_information});
 }
 
+export const getAzureUserInfo = (accessToken) => dispatch => {
+  //Gets us our user info
+    axios.get(`https://graph.microsoft.com/v1.0/me`,
+    {headers: {
+      'Authorization': `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+          'Prefer' : 'outlook.body-content-type="text"'
+    }})
+    .then(response => {
+      console.log(response)
+      dispatch({type: 'USER_ADMIN_VALUE', payload: response.data.value})})
+    .catch(err => dispatch({type: 'ERROR_CAUGHT', payload: {err_message: "Can't find calendar for account", err_code: err.response.request.status, err_value: err.response.request.statusText}}));
+}
+
+export const destroyWorker = (worker_id) => dispatch => {
+  //This deletes the worker as well as the worker_customers associated with it
+  
+  axios.post(`http://localhost:3001/workers/destroy`, {id: worker_id})
+  .then(() => {
+    dispatch({type: 'WORKER_DESTROYED', payload: worker_id});
+    dispatch({type: 'WORKER_CUSTOMER_ROWS_DESTROYED', payload: worker_id});  
+    })
+  .catch(err => dispatch({type: 'ERROR_CAUGHT', payload: {err_message: err.response.data.message, err_code: err.response.request.status, err_value: err.response.request.statusText}}))
+}
