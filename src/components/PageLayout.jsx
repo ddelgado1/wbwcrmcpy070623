@@ -55,7 +55,7 @@ export const PageLayout = (props) => {
     }, [instance, accounts, dispatch]);
 
     useEffect(() => {
-        // Fetch access token and set userRole so that we can use it for auth
+        // Fetch access token and set userRole so that we can use it for authorization
         if (isAuthenticated && accounts.length > 0) {
             instance.acquireTokenSilent({
                 ...loginRequest,
