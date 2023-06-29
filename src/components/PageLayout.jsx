@@ -18,6 +18,7 @@ import { InteractionRequiredAuthError } from "@azure/msal-common";
 
 import './components.scss';
 
+import logo from "./Logo.png";
 /**
  * Renders the header with a sign in/out button as well as all of the page links
  */
@@ -114,6 +115,7 @@ export const PageLayout = (props) => {
                     <div>
                         <Navbar >
                             <div className="app_header">
+                                <img src={logo} alt="Company Logo" style={{ width: "30px", height: "30px" }} />
                                 <h3 onClick={e => resetSearch(e)}><Link to="contacts">View All Contacts</Link></h3>
                                 {userRole === 'CRM.Manage' && <h3 onClick={e => resetSearch(e)}><Link to="new_contact">Create a New Contact</Link></h3>}
                                 <h3 onClick={e => resetSearch(e)}><Link to="search">Search Contacts</Link></h3>
