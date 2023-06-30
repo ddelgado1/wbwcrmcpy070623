@@ -26,27 +26,15 @@ export const setCurrentWorker = (worker_information) => dispatch => {
   //Once we have confirmation that the worker is signed in, we set the current worker to be this
   dispatch({type: 'SET_CURRENT_WORKER', payload: worker_information});
 }
-
-export const getAzureUserInfo = (accessToken) => dispatch => {
+export const getGroupList = (accessToken) => dispatch => {
   //Gets us our user info
-    axios.get(`https://graph.microsoft.com/v1.0/me`,
+    axios.get(`https://graph.microsoft.com/v1.0/groups/628f70b0-c47a-43f9-8e0a-e7b34cafd770/members`,
     {headers: {
       'Authorization': `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
           'Prefer' : 'outlook.body-content-type="text"'
     }})
     .then(response => {
-      dispatch({type: 'USER_ADMIN_VALUE', payload: response.data.value})})
+      dispatch({type: 'GROUP_WORKER_LIST', payload: response.data.value})})
     .catch(err => dispatch({type: 'ERROR_CAUGHT', payload: {err_message: "Can't find calendar for account", err_code: err.response.request.status, err_value: err.response.request.statusText}}));
-}
-
-export const destroyWorker = (worker_id) => dispatch => {
-  //This deletes the worker as well as the worker_customers associated with it
-  
-  axios.post(`http://localhost:3001/workers/destroy`, {id: worker_id})
-  .then(() => {
-    dispatch({type: 'WORKER_DESTROYED', payload: worker_id});
-    dispatch({type: 'WORKER_CUSTOMER_ROWS_DESTROYED', payload: worker_id});  
-    })
-  .catch(err => dispatch({type: 'ERROR_CAUGHT', payload: {err_message: err.response.data.message, err_code: err.response.request.status, err_value: err.response.request.statusText}}))
 }

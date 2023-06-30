@@ -4,17 +4,17 @@ import { useIsAuthenticated } from "@azure/msal-react";
 import { SignInButton } from "./SignInButton";
 import { SignOutButton } from "./SignOutButton";
 import { Link, Outlet } from 'react-router-dom';
-import { setCurrentWorker, getAzureUserInfo } from '../actions/worker';
+import { setCurrentWorker } from '../actions/worker';
 import { revertSearchedCustomers } from '../actions/customer.js';
 import { deleteErrors } from "../actions/error";
 import { useDispatch, useSelector } from 'react-redux';
 import { useMsal } from "@azure/msal-react";
-import { loginRequest } from '../authConfig.js';
+// import { loginRequest } from "../authConfig";
+// import { InteractionRequiredAuthError } from "@azure/msal-browser";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { getRoleFromToken } from '../utils/tokenUtils';
-import { InteractionRequiredAuthError } from "@azure/msal-common";
 
 import './components.scss';
 
@@ -36,44 +36,12 @@ export const PageLayout = (props) => {
     const [userRole, setUserRole] = useState(null); // New state for holding the role of the user
 
     useEffect(() => {
+        //This is getting the userRole from the given token
         const role = getRoleFromToken(instance, accounts);
         setUserRole(role);
     }, [instance, accounts]);
 
-    useEffect(() => {
-        //Here's all of the stuff to actually get the user picture and send it to the reducer. 
-        const accessTokenRequest = {
-            ...loginRequest,
-            account: accounts[0]
-        }
-        instance
-            .acquireTokenSilent(accessTokenRequest)
-            .then((accessTokenResponse) => {
-                // Acquire token silent success
-                let accessToken = accessTokenResponse.accessToken;
-                // Call your API with token
-                dispatch(getAzureUserInfo(accessToken))
-            })
-    }, [instance, accounts, dispatch]);
 
-    useEffect(() => {
-        // Fetch access token and set userRole so that we can use it for authorization
-        if (isAuthenticated && accounts.length > 0) {
-            instance.acquireTokenSilent({
-                ...loginRequest,
-                account: accounts[0]
-            }).then((response) => {
-                // Expected roles to be an array included in the accessToken under the 'roles' claim
-                // Replace 'roles' with your claim name if it's different
-                setUserRole(response.accessTokenClaims['roles']);
-            }).catch(error => {
-                if (error instanceof InteractionRequiredAuthError) {
-                    // fallback to interaction when silent call fails
-                    instance.acquireTokenRedirect(loginRequest);
-                }
-            });
-        }
-    }, [isAuthenticated, instance, accounts]);
 
     useEffect(() => {
         //This displays a toast notification that shows the errors
@@ -104,6 +72,23 @@ export const PageLayout = (props) => {
         }
     }, [accounts, workers, dispatch])
 
+    // useEffect(() => {
+    //     // Fetch access token so that we can get our group data. 
+    //     if (isAuthenticated && accounts.length > 0) {
+    //         instance.acquireTokenSilent({
+    //             ...loginRequest,
+    //             account: accounts[0]
+    //         }).then((response) => {
+    //             dispatch(getGroupList(response.accessToken))
+    //         }).catch(error => {
+    //             if (error instanceof InteractionRequiredAuthError) {
+    //                 // fallback to interaction when silent call fails
+    //                 instance.acquireTokenRedirect(loginRequest);
+    //             }
+    //         });
+    //     }
+    // }, [isAuthenticated, instance, accounts, dispatch]);
+
     const resetSearch = (e) => {
         dispatch(revertSearchedCustomers());
     }
@@ -111,11 +96,11 @@ export const PageLayout = (props) => {
     if (Object.keys(error).length === 0 || error.err_code === 406) {
         return (
             <>
-                {isAuthenticated && (userRole === 'CRM.Manage' || userRole === 'CRM.Work') ?
+                {isAuthenticated ?
                     <div>
                         <Navbar >
                             <div className="app_header">
-                                <img src={logo} alt="Company Logo" style={{ width: "30px", height: "30px" }} />
+                                <img src={logo} alt="Company Logo" id="wbw-logo" />
                                 <h3 onClick={e => resetSearch(e)}><Link to="contacts">View All Contacts</Link></h3>
                                 {userRole === 'CRM.Manage' && <h3 onClick={e => resetSearch(e)}><Link to="new_contact">Create a New Contact</Link></h3>}
                                 <h3 onClick={e => resetSearch(e)}><Link to="search">Search Contacts</Link></h3>
@@ -148,4 +133,5 @@ export const PageLayout = (props) => {
         )
     }
 };
+
 

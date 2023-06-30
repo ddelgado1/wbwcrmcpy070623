@@ -392,7 +392,7 @@ label {
 
 
 #menuStyles::-webkit-scrollbar {
-  width: 10px;
+  width: 100px;
   /* Width of the scrollbar */
 }
 
@@ -434,7 +434,7 @@ label {
   &__menu {
     position: absolute;
     top: 100%;
-    width: 20%;
+    width: 100%;
     list-style: none;
     padding: 0;
     margin: 4px 0;
